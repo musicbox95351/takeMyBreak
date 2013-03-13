@@ -9,6 +9,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HttpVisiter {
 
@@ -76,12 +78,31 @@ public class HttpVisiter {
 		 //String result = post("m.weather.com.cn/data5/city281601.xml","","UTF-8");
 		 
 //		 URL my_url = new URL("http://m.weather.com.cn/data5/city28.xml");
-		 URL my_url = new URL("http://m.weather.com.cn/data/101281601.html");
-		 BufferedReader br = new BufferedReader(new InputStreamReader(my_url.openStream(),"UTF-8"));
-		 String strTemp = "";
+		 //URL my_url = new URL("http://m.weather.com.cn/data/101281601.html");
+		 URL my_url = new URL("http://oil.usd-cny.com/guizhou.htm");
+		 BufferedReader br = new BufferedReader(new InputStreamReader(my_url.openStream(),"gb2312"));
+		 String strTemp ;
+		 StringBuffer result = new StringBuffer();
+		 boolean begin = false;
 		 while(null != (strTemp = br.readLine())){
 				 System.out.println("["+strTemp+"]");
+				 if(strTemp.indexOf("90#汽油")>-1){
+					 begin = true; 
+				 }
+				 if(begin){
+					 result.append(strTemp);
+				 }
 		 }
-
+		 System.out.println("结果:"+result);
+		 String resultStr = result.toString();
+		 
+		 
+		 Pattern pat = Pattern.compile("93#汽油.+?\\>(\\d+\\.\\d+)</");
+			Matcher mat = pat.matcher(resultStr);
+			System.out.println("匹配:"+mat.find());
+			System.out.println("匹配组数:"+mat.groupCount());
+			System.out.println("匹配结果:"+mat.group());
+			System.out.println("匹配结果:"+mat.group(1));
+			
 	 }
 }

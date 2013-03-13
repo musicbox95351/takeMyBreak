@@ -13,7 +13,7 @@ public class Judger {
 	//两位小数(必须带小数点)
 	public static final String DECIMAL_TWO_STRICT = "^[1-9]\\d*\\.d{1,2}$";
 	//两位小数(可不带小数点)
-	public static final String DECIMAL_TWO = "^^([1-9]\\d*)||([1-9]\\d*\\.d{1,2})$";
+	public static final String DECIMAL_TWO = "^([1-9]\\d*)||([1-9]\\d*\\.d{1,2})$";
 	/**
 	 * 检查一个字符串是否符合预定的正则表达式
 	 * @param reg 正则表达式

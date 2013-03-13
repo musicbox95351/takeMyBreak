@@ -8,8 +8,6 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.HashMap;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,7 +30,7 @@ public class TakeMyBreakFramePainter {
 
 	private JFrame frame;
 
-	private static final String DEFAULT_IMAGE_URL = "net/zcmusicbox/health/taskmybreak/Waterlilies.jpg";
+	private static final String DEFAULT_IMAGE_URL = "net/zcmusicbox/health/taskmybreak/eyes_protect.jpg";
 	private static final String IMAGE_RIGHT = "net/zcmusicbox/health/taskmybreak/setting.png";
 	private static final String IMAGE_LEFT = "net/zcmusicbox/health/taskmybreak/hide.png";
 	
@@ -120,7 +118,6 @@ public class TakeMyBreakFramePainter {
 		timeSpanLabel.setName("label");
 		timeSpanLabel.setBounds(20, 0, 100, 18);
 		panel.add(timeSpanLabel);
-		JSONObject o = new JSONObject();
 		textTimeSpan.setBounds(130, 0, 30, 18);
 		panel.add(textTimeSpan);
 		saveButton = new JButton("Save");
@@ -183,10 +180,13 @@ public class TakeMyBreakFramePainter {
 		defaultImages = new JComboBox();
 		//为选项添加显示内容
 		//http://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html#renderer
+		defaultImages.addItem(new JComboBoxItem<String, String>("eyes_protect.jpg", "overlook"));
+		defaultImages.addItem(new JComboBoxItem<String, String>("path.jpg", "path"));
+		defaultImages.addItem(new JComboBoxItem<String, String>("mountain.jpg", "mountain"));
+		defaultImages.addItem(new JComboBoxItem<String, String>("river.jpg", "river"));
 		defaultImages.addItem(new JComboBoxItem<String, String>("Waterlilies.jpg", "Waterlilies"));
 		defaultImages.addItem(new JComboBoxItem<String, String>("tree.jpg", "Tree"));
 		defaultImages.addItem(new JComboBoxItem<String, String>("leaves.jpg", "Leaves"));
-		defaultImages.addItem(new JComboBoxItem<String, String>("green1.jpg", "greenFlower"));
 		defaultImages.setLocation(20, 40);
 		defaultImages.setSize(200, 18);
 		panel.add(defaultImages);
